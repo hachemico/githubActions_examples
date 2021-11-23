@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hachemico/githubActions_examples/issues"
   },
-  "homepage": "https://github.com/hachemico/githubActions_examples#readme"
+  "homepage": "https://github.com/hachemico/githubActions_examples#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
 }
