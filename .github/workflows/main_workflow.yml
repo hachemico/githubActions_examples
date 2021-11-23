@@ -22,4 +22,4 @@ jobs:
       - name: Obtener codigo
         uses: actions/checkout@v2
       - name: ejecutar test
-        run: npm install && npm test
+        run: npm install jest && npm test
