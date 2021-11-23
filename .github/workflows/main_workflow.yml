@@ -1,0 +1,25 @@
+name: linter-execution
+on: [push]
+jobs:
+  checkout_code:
+    name: checkout_code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener codigo
+        uses: actions/checkout@v2
+      - name: ejecutar linter
+        uses: github/super-linter@v3
+        env:
+          DEFAULT_BRANCH: nodejs_linter_job
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINTER_RULES_PATH: /
+          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
+          VALIDATE_JAVASCRIPT_ES: true
+jest_tests:
+    name: jest_test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener codigo
+        uses: actions/checkout@v2
+      - name: ejecutar test
+        run: npm install && npm test
