@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node:[10,12]
+        node: [10,12]
     steps:
       - name: Obtener codigo
         uses: actions/checkout@v2
