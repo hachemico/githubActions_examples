@@ -4,11 +4,16 @@ jobs:
   checkout_code:
     name: checkout_code
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node:[10,12]
     steps:
       - name: Obtener codigo
         uses: actions/checkout@v2
       - name: ejecutar linter
         uses: github/super-linter@v3
+      with:
+        node-version: ${{matrix.node}}
         env:
           DEFAULT_BRANCH: nodejs_linter_job
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
