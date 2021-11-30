@@ -1,0 +1,32 @@
+name: artifact
+on: [push]
+jobs:
+  checkout_code:
+    name: checkout_code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener codigo
+        uses: actions/checkout@v2
+        
+      - name: ejecutar
+        run: npm install && npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: build/
+        
+  down-artifact:
+    name: artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: descarga_artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+      - name: desplega_surge
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'foo-bar.surge.sh'
+          project: '.'
+          login: ${{ secrets.surge_login }}
+          token: ${{ secrets.surge_token }}
