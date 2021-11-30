@@ -1,4 +1,4 @@
-name: artifact
+name: artif
 on: [push]
 jobs:
   checkout_code:
@@ -16,6 +16,7 @@ jobs:
           path: build/
         
   down-artifact:
+    needs: checkout_code
     name: artifact
     runs-on: ubuntu-latest
     steps:
